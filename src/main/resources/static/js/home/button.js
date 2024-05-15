@@ -6,8 +6,8 @@ let disLikeButtonBox = voteBox.querySelector(".dislike-box");
 let likeCount = likeButtonBox.querySelector(".like-box > span:first-child");
 let disLikeCount = disLikeButtonBox.querySelector(".dislike-box > span:first-child");
 let data = {};
-let url = '/api/community-board-likes';
 let boardId = Number(voteBox.dataset.boardid);
+let url = '/api/community-board-likes/'+boardId;
 
 voteBox.onclick = function(e) {
     e.preventDefault();
@@ -53,14 +53,14 @@ voteBox.onclick = function(e) {
         //         // 에러 처리
         //     });
 
-        async function like(boardId) {
+        async function like() {
             const response = await fetch(url+'/like',
                 {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'text/plain'
-                    },
-                    body: boardId
+                    // headers: {
+                    //     'Content-Type': 'text/plain'
+                    // },
+                    // body: boardId
                 });
             const jsonData = await response.json();
 
@@ -70,7 +70,7 @@ voteBox.onclick = function(e) {
 
         }
 
-        like(boardId);
+        like();
     }
 
     // 싫어요 클릭
@@ -90,7 +90,7 @@ voteBox.onclick = function(e) {
         // data = { boardId: boardId, userId: userId, type: type };
 
         async function disLike() {
-            const response = await fetch(url+'/dislike',
+            const response = await fetch(url+'dislike',
                 {
                     method: 'POST',
                     headers: {

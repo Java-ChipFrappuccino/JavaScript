@@ -21,11 +21,11 @@ public class HomeController {
 //
 //    }
 
-    @PostMapping("like")
-    public int like(@RequestBody String boardId) {
+    @PostMapping("{boardId}/like")
+    public int like(@PathVariable Long boardId) {
 //        @RequestBody LikeRequest LikeRequest
 //        @AuthenticationPrincipal CustomUserDetails userDetails
-        System.out.printf("게시글 아이디 좋아요: %d ",Long.parseLong(boardId));
+        System.out.printf("게시글 아이디 좋아요: %d ",boardId);
         return 100;
     }
 
