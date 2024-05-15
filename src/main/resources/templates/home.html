@@ -1,16 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link type="text/css" href="https://www.newlecture.com/dist/v0.2.1/style.min.css" rel="stylesheet">
+    <script src="https://www.newlecture.com/dist/v0.2.1/script.min.js"></script>
     <script src="/js/home/home.js" defer></script>
+    <script src="/js/home/button.js" defer></script>
+    <style>
+        .vote-box {
+            width: 56px;
+            height: 56px;
+            cursor: pointer;
+        }
+
+    </style>
 </head>
 <body>
-    <main>
-        <section>
-            <h1>자스연습용</h1>
-            <div onclick="clickText()" th:text="${message}"></div>
-        </section>
-    </main>
+<main>
+    <section>
+        <h1>자스연습용</h1>
+        <div th:text="${message}"></div>
+
+        <div th:data-boardid="2"
+             th:data-userid="10" class="d:flex gap:3" id="vote-box">
+            <button class="d:flex flex-direction:column ai:center border border-radius:1 p:1 vote-box gap:1 like-box">
+                <span class="fw:2 color:base-10" th:text="${count}">14</span>
+                <span class="icon icon:thumbs_up icon-color:accent-1">아이콘</span>
+            </button>
+            <button class="d:flex flex-direction:column ai:center border border border-radius:1 p:1 vote-box gap:1 dislike-box">
+                <span class="fw:2 color:base-10" th:text="${count}">3</span>
+                <span class="icon icon:thumbs_down icon-color:sub-1">아이콘</span>
+            </button>
+        </div>
+    </section>
+</main>
 </body>
 </html>

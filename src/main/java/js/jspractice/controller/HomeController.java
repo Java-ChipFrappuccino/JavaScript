@@ -14,6 +14,7 @@ public class HomeController {
     @GetMapping()
     public String home(Model model) {
         model.addAttribute("message", "Hello World!");
+        model.addAttribute("count", 0);
         return "home";
     }
 }
